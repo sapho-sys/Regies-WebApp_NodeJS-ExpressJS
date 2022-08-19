@@ -11,11 +11,11 @@ function Registration(){
                 break;
             }
             case 'Stellenbosch': {
-                entry = 'CL';
+                  entry = 'CL';
                 break;
             }
             case 'Cape Town': {
-                entry = 'CA';
+                  entry = 'CA';
                 break;
             }
         }
