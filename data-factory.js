@@ -6,8 +6,6 @@ function DataLogic(data){
 
     var warning = '';
 
-	
-
     async function populateRegies(newReg) {
 		if (newReg !== '') {
 			let regNo = newReg.toUpperCase();
