@@ -1,6 +1,6 @@
 function Registration(){
     let entry = ' ';
-    function filterRegies(plate){
+    function myTown(plate){
         switch (plate){
             case 'Bellville': {
                   entry = 'CY';
@@ -27,7 +27,7 @@ function Registration(){
 
 
     return{
-        filterRegies,
+        myTown,
         showCode
     }
 }

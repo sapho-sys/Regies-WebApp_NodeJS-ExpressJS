@@ -1,14 +1,15 @@
 import express from "express";
 import exphbs from "express-handlebars";
 import session from "express-session";
+import greetingRouters from "./routes/router.js";
 import flash from "express-flash";
-import dataFactory from "./data-factory";
-import displayFactory from "./display-factory";
+import dataFactory from "./data-factory.js";
+import displayFactory from "./display-factory.js";
 import pgPromise from "pg-promise";
 
 const pgp = pgPromise({});
 
-const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:sap123@localhost:5432/my_registrations';
+const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:sap123@localhost:5432/my_regies';
 
 const config = { 
 	connectionString
@@ -23,8 +24,6 @@ if (process.env.NODE_ENV == 'production') {
 
 
 const db = pgp(config);
-
-
 const regiesDB = dataFactory(db);
 const myRegies = displayFactory();
 
