@@ -1,6 +1,6 @@
 import express from "express";
 import exphbs from "express-handlebars";
-import session from "express-session";
+import session from "cookie-session";
 import bodyParser from "body-parser";
 import greetingRouters from "./routes/router.js";
 import flash from "express-flash";
