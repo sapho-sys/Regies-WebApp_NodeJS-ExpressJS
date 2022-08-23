@@ -1,4 +1,5 @@
 import express from "express";
+let app = express();
 import exphbs from "express-handlebars";
 import session from "express-session";
 import bodyParser from "body-parser";
@@ -22,7 +23,7 @@ if (process.env.NODE_ENV == 'production') {
 	}
 }
 
-let app = express();
+
 
 const db = pgp(config);
 const regiesDB = dataFactory(db);
