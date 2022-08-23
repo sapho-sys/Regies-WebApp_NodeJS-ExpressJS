@@ -1,56 +1,62 @@
-import dataFactory from "../data-factory"; 
-import displayFactory from "../display-factory";
 
+function regiesTowns(dataFactory,displayFactory){
+    
+     async function defaultRoute(req, res){
 
-
-function regiesTowns(){
-
-let data = dataFactory();
-let display = displayFactory();
-
-    async function defaultRoute(req, res){
         res.render("index",{
-            regiesData: await data.retrieveData()
+            regiesData: await dataFactory.retrieveData()
         })
-
     }
 
-    async function homePage(req, res){
+    async function homePage(req, res,next){
         try {
-            await data.populateRegies(req.body.entry);
+            await dataFactory.populateRegies(req.body.RegEntry);
             res.redirect('/');
         } catch (error) {
-            console(error) 
+            next(error) 
         }
     }
 
-
-    async function postRegies(req, res){
+      function postRegies(req, res,next){
         try {
-             display.myTown(req.body.showTown);
-             res.redirect("/filter_regies")  
+             displayFactory.myTown(req.body.showTown);
+             res.redirect("/reg_numbers");  
         } catch (error) {
-            console.log(error);  
+            next(error);  
         }
     }
 
-    async function fetchRegies(req,res){
+    async function fetchRegies(req,res, next){
         try {
-            let code = display.showCode();
-            let myData = [];
-            if(code !== " "){
-                myData = await data.filterRegies(code);
-            }
-          
+			let Towncode = displayFactory.showCode();
+			let displayReg = [];
+			if (Towncode !== '') {
+				displayReg = await dataFactory.filterRegies(Towncode);
+
+				if (displayReg.length == 0) {
+					req.flash('success', 'No Registration number(s) from this town yet');
+				} 
+			} else {
+				req.flash('info', 'Error! town not selected');
+			}
+			res.render("index", {
+                displayReg
+            });
             
-        } catch (error) {
-            console.log(error)
+		} catch (error) {
+			next(error);
             
-        }
+		}
+        
     }
 
     async function resetData(req, res){
+        await dataFactory.resetData();
+        res.redirect('/');
+    }
 
+    function showAll(res,req){
+        res.redirect('/');
     }
 
     return {
@@ -58,7 +64,8 @@ let display = displayFactory();
         homePage,
         postRegies,
         fetchRegies,
-        resetData
+        resetData,
+        showAll
     }
 
 

@@ -53,7 +53,7 @@ function DataLogic(data){
 	}
 
 	async function resetData() {
-		return db.none('DELETE FROM reg_plates');
+		return db.none('DELETE FROM reg_numbers');
 	}
 
     return{

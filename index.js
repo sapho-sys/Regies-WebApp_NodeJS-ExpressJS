@@ -1,6 +1,7 @@
 import express from "express";
 import exphbs from "express-handlebars";
 import session from "express-session";
+import bodyParser from "body-parser";
 import greetingRouters from "./routes/router.js";
 import flash from "express-flash";
 import dataFactory from "./data-factory.js";
@@ -21,7 +22,7 @@ if (process.env.NODE_ENV == 'production') {
 	}
 }
 
-
+let app = express();
 
 const db = pgp(config);
 const regiesDB = dataFactory(db);
@@ -55,8 +56,18 @@ app.use(flash());
 
 
 
-let app = express();
+
 app.use(express.static('public'));
+
+app.get('/', regiesRouter.defaultRoute);
+app.post('/action', regiesRouter.homePage);
+app.post('/reg_numbers',regiesRouter.postRegies);
+app.get('/reg_numbers', regiesRouter.fetchRegies);
+app.get('/reset', regiesRouter.resetData);
+app.get('/showAll', regiesRouter.showAll)
+
+
+
 
 let PORT = process.env.PORT || 3007;
 
