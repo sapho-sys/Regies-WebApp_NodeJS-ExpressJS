@@ -4,7 +4,8 @@ function regiesTowns(dataFactory, displayFactory) {
     async function defaultRoute(req, res) {
 
         res.render("index", {
-            regiesData: await dataFactory.retrieveData()
+            regiesData: await dataFactory.retrieveData(),
+            error: dataFactory.errorMessages()
         })
     }
 

@@ -49,6 +49,18 @@ describe("Testing registration functions with database logic", function(){
         await regEntry.populateRegies("CL 231-000");
         assert.deepEqual([ { regnumber: 'CL 231-000', town_id: 4 } ],await regEntry.retrieveData())
     })
+    it('error message for a blank entry', async function(){
+        let regEntry = dataFactory(db);
+        
+        await regEntry.populateRegies("");
+        assert.equal('Registration number not entered',regEntry.errorMessages())
+    })
+    it('error message for a invalid entry', async function(){
+        let regEntry = dataFactory(db);
+        
+        await regEntry.populateRegies("CF -3972");
+        assert.equal('Invalid registration number format entered',regEntry.errorMessages())
+    })
     it('should filter for a registration plate from Paarl', async function(){
         let regEntry = dataFactory(db);
         let filter = displayFactory();
@@ -85,7 +97,7 @@ describe("Testing registration functions with database logic", function(){
 
         assert.deepEqual([ { regnumber: 'CL 369-246', town_id: 4 } ], await regEntry.filterRegies("CL"))
     })
-
+   
     after( async function() {
         db.$pool.end();
     });
