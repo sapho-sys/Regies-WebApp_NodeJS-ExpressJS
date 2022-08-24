@@ -1,5 +1,5 @@
 import express from "express";
-let app = express();
+const app = express();
 import exphbs from "express-handlebars";
 import session from "express-session";
 import bodyParser from "body-parser";
@@ -65,7 +65,7 @@ app.post('/action', regiesRouter.homePage);
 app.post('/reg_numbers',regiesRouter.postRegies);
 app.get('/reg_numbers', regiesRouter.fetchRegies);
 app.get('/reset', regiesRouter.resetData);
-app.get('/showAll', regiesRouter.showAll)
+app.get('/showAlltown', regiesRouter.showAll)
 
 
 

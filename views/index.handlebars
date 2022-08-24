@@ -79,9 +79,9 @@
     </fieldset>
     <br><br>
 
-    <form action="showAll" method="GET">
+    <form action="showAlltown" method="GET">
 
-      <button class="showAll" on type="submit" name="button">Show All</button>
+      <button class="showAll" on type="submit" name="showAll">Show All</button>
 
     </form>
 
@@ -98,19 +98,30 @@
 
 
   <div class="dispReg">
-    
+
 
     {{#each regiesData}}
     <plates>{{regnumber}}</plates>
     {{/each}}
-     {{#each displayReg}}
+
+    {{#each displayReg}}
+    <plates>{{regnumber}}</plates>
+    {{/each}}
+
+    {{#each allTowns}}
     <plates>{{regnumber}}</plates>
 
     {{/each}}
 
 
   </div>
-  <div class="error">
+
+  
+  <div class="error {{color}}">{{error}}
+  
+
+  
+
 
   </div>
 
@@ -123,7 +134,8 @@
 
 
 
-  {{!-- <script src="./tests/factorieReg.js" type="text/javascript"></script>
+  {{!--
+  <script src="./tests/factorieReg.js" type="text/javascript"></script>
   <script src="./js/regies.js" type="text/javascript"></script> --}}
 
 

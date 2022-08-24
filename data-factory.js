@@ -56,12 +56,31 @@ function DataLogic(data){
 		return db.none('DELETE FROM reg_numbers');
 	}
 
+	 function showTowns(){
+		warning = ' ';
+	}
+
+	function errorMessages(){
+		return warning;
+	}
+
+	function classListAdd(){
+		if(warning === 'Invalid registration number format entered' || warning === 'Registration number not entered'){
+			return 'danger';
+		}else{
+			return 'warning';
+		}
+	}
+
     return{
         regEntry,
         resetData,
         filterRegies,
         retrieveData,
-        populateRegies
+        populateRegies,
+		showTowns,
+		errorMessages,
+		classListAdd
     }
       
 }
