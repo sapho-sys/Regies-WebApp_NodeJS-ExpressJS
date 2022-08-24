@@ -57,9 +57,9 @@ function regiesTowns(dataFactory, displayFactory) {
         res.redirect('/');
     }
 
-    function showAll(res, req) {
-        // displayFactory.showTowns();
-        res.redirect('/index');
+    function showAll(req, res) {
+        dataFactory.showTowns();
+        res.redirect('/');
     }
 
     return {
