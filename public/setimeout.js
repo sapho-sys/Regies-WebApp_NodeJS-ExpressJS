@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-	let greetMsg = document.querySelector('.error');
+	let errorMsg = document.querySelector('.error');
 
-	if (greetMsg.innerHTML !== '') {
+	if (errorMsg.innerHTML !== '') {
 		setTimeout(function() {
-			greetMsg.innerHTML = '';
+			errorMsg.innerHTML = '';
 
 		}, 5000);
 	}
