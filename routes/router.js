@@ -2,10 +2,10 @@
 function regiesTowns(dataFactory, displayFactory) {
 
     async function defaultRoute(req, res) {
-
+        req.flash('error', dataFactory.errorMessages());
         res.render("index", {
-            regiesData: await dataFactory.retrieveData(),
-            error: dataFactory.errorMessages()
+            regiesData: await dataFactory.retrieveData()
+          
         })
     }
 
@@ -14,6 +14,7 @@ function regiesTowns(dataFactory, displayFactory) {
             await dataFactory.populateRegies(req.body.RegEntry);
             
             res.redirect('/');
+           
         } catch (error) {
             next(error)
         }
@@ -32,16 +33,22 @@ function regiesTowns(dataFactory, displayFactory) {
         try {
             let Towncode = displayFactory.showCode();
             let color = dataFactory.classListAdd();
-            let error = dataFactory.errorMessages()
-
-            let displayReg = [];
+            
+            let renderRegies = [];
             if (Towncode !== '') {
-                displayReg = await dataFactory.filterRegies(Towncode);
-            }
+                renderRegies = await dataFactory.filterRegies(Towncode);
+
+				if (renderRegies.length == 0) {
+					req.flash('error', 'There are no registration number(s) from this town yet');
+				} 
+            }else {
+				req.flash('error', 'Please select a town !');
+			}
+
             res.render("index", {
-                displayReg,
-                color,
-                error
+                renderRegies,
+                color
+                
 
             });
 
@@ -54,6 +61,7 @@ function regiesTowns(dataFactory, displayFactory) {
 
     async function resetData(req, res) {
         await dataFactory.resetData();
+        
         res.redirect('/');
     }
 

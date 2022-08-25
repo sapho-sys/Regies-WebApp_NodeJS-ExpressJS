@@ -59,10 +59,10 @@
       <form action="/reset" method="GET">
         <button class="reset" on type="submit" name="button">Reset Storage</button>
       </form>
-
-
-
       <br><br>
+      <form action="/showAlltown" method="GET">
+        <button class="showAll" on type="submit" name="showAll">Show All</button>
+      </form>
       <form action="/reg_numbers" method="POST">
         <input class="rad1" type="radio" id="Cpt" name="showTown" value="Cape Town">
         <label for="Cpt">Cape Town</label>
@@ -72,57 +72,54 @@
         <label for="Stellies">Stellenbosch</label>
         <input class="rad1" type="radio" id="Bellville" name="showTown" value="Bellville">
         <label for="Bellville">Bellville</label>
-
         <button class="show" on type="submit" name="button">Show</button>
+        {{!-- <br><br> --}}
+        <div class="dispReg">
+
+
+          {{#each regiesData}}
+          <plates>{{regnumber}}</plates>
+          {{/each}}
+
+          {{#each renderRegies}}
+          <plates>{{regnumber}}</plates>
+          {{/each}}
+
+          {{#each allTowns}}
+          <plates>{{regnumber}}</plates>
+
+          {{/each}}
+
+          {{#if messages.error}}
+          <div class="error {{color}}">{{messages.error}}
+            {{/if}}
+
+
+
+          </div>
+
+
+
+
+
+
+        </div>
+
+
+
       </form>
-      <br><br>
+      <br>
+
+
+
+
+
+
+
+
+
 
     </fieldset>
-    <br><br>
-
-    <form action="/showAlltown" method="GET">
-
-      <button class="showAll" on type="submit" name="showAll">Show All</button>
-
-    </form>
-
-
-
-
-
-  </div>
-
-
-
-
-
-
-
-  <div class="dispReg">
-
-
-    {{#each regiesData}}
-    <plates>{{regnumber}}</plates>
-    {{/each}}
-
-    {{#each displayReg}}
-    <plates>{{regnumber}}</plates>
-    {{/each}}
-
-    {{#each allTowns}}
-    <plates>{{regnumber}}</plates>
-
-    {{/each}}
-
-
-  </div>
-
-  
-  <div class="error {{color}}">{{error}}
-  
-
-  
-
 
   </div>
 
@@ -135,7 +132,13 @@
 
 
 
- <script src="setimeout.js"></script>
+
+
+
+
+
+
+  <script src="setimeout.js"></script>
 
 </body>
 

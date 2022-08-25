@@ -3,6 +3,8 @@ function DataLogic(data){
     const regExp = /^((CA|CY|CJ|CL)\s([0-9]){6})$/;
     const regExp1 = /^((CA|CY|CJ|CL)\s([0-9]){3}\s([0-9]){3})$/;
     const regExp2 = /^((CA|CY|CJ|CL)\s([0-9]){3}\-([0-9]){3})$/;
+	
+
 
     var warning = '';
 
@@ -47,7 +49,7 @@ function DataLogic(data){
 			return Filter;
 		} else {
 			warning = 'select a town!';
-			return [];
+			
 
 		}
 	}
