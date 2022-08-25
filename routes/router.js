@@ -14,6 +14,7 @@ function regiesTowns(dataFactory, displayFactory) {
             await dataFactory.populateRegies(req.body.RegEntry);
             
             res.redirect('/');
+            
            
         } catch (error) {
             next(error)
@@ -48,8 +49,6 @@ function regiesTowns(dataFactory, displayFactory) {
             res.render("index", {
                 renderRegies,
                 color
-                
-
             });
 
         } catch (error) {
