@@ -53,6 +53,7 @@ function DataLogic(data){
 	}
 
 	async function resetData() {
+		warning = "Data has been deleted..."
 		return db.none('DELETE FROM reg_numbers');
 	}
 

@@ -111,10 +111,10 @@ p {
   color: white;
   font-weight: bold;
   border: 3px solid #f1f1f1;
-  position: absolute;
-  top: 40%;
+  position: fixed;
+  top: 50%;
   left: 50%;
-  margin-bottom: 90%;
+  margin-bottom: 50%;
   transform: translate(-50%, -50%);
   z-index: 0;
   width: 80%;
@@ -139,8 +139,38 @@ p {
      
      font-size: 50px;
   }
-  
-  
+  input[type=text] {
+    width: 30%;
+    padding: 12px 20px;
+    /* margin: 5px 0; */
+    box-sizing: border-box;
+    border: none;
+    background-color: #3CBC8D;
+    color: white;
+  }
+
+  .add {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10pt;
+}
+.reset {
+  background-color: #ff0000; /* Red */
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10pt;
+}
   .topnav a {
    float: left;
    display: block;
@@ -194,6 +224,9 @@ p {
      right: 0;
      top: 0;
      background-color: #C1B9F3;
+   }
+   input[type='text']{
+    width:60%;
    }
    
    .topnav.responsive a {
