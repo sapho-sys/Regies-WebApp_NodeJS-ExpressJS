@@ -3,6 +3,7 @@ function regiesTowns(dataFactory, displayFactory) {
 
     async function defaultRoute(req, res) {
         req.flash('error', dataFactory.errorMessages());
+        
         res.render("index", {
             regiesData: await dataFactory.retrieveData()
           
@@ -14,7 +15,6 @@ function regiesTowns(dataFactory, displayFactory) {
             await dataFactory.populateRegies(req.body.RegEntry);
             
             res.redirect('/');
-            
            
         } catch (error) {
             next(error)
@@ -49,6 +49,7 @@ function regiesTowns(dataFactory, displayFactory) {
             res.render("index", {
                 renderRegies,
                 color
+
             });
 
         } catch (error) {

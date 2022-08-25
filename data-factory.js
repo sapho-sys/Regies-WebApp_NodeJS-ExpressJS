@@ -29,8 +29,10 @@ function DataLogic(data){
 		const regMutation = await db.manyOrNone('SELECT * FROM reg_numbers WHERE regnumber = $1', [myReg]);
 		if (regMutation.length == 0) {
 			await db.manyOrNone('INSERT INTO reg_numbers (regnumber, town_id)  VALUES ($1, $2)', [myReg, Id]);
+			showTowns();
 		} else {
 			warning = 'The registration number you entered already exists!';
+
 		}
 	}
 
