@@ -13,7 +13,7 @@ function DataLogic(data){
 			let regNo = newReg.toUpperCase();
 			let strReg = regNo.substring(0,2);
 			if (regNo.match(regExp) || regNo.match(regExp1) || regNo.match(regExp2)) {
-				const getRow = await db.manyOrNone('SELECT * FROM reg_plates WHERE code = $1', [strReg]);
+				// const getRow = await db.manyOrNone('SELECT * FROM reg_plates WHERE code = $1', [strReg]);
 				const getId = await db.manyOrNone('SELECT id FROM reg_plates WHERE code = $1', [strReg]);
 				let newId = getId[0].id;
 				await regEntry(regNo,newId);
