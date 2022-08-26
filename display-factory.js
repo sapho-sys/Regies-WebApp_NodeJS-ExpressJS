@@ -23,9 +23,7 @@ function Registration(){
     function showCode(){
         return entry;
     }
-
-
-
+    
     return{
         myTown,
         showCode
